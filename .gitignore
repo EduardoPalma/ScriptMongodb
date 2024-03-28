@@ -24,8 +24,10 @@ wheels/
 pip-log.txt
 pip-delete-this-directory.txt
 *.log
-data_las_vegas/
-north_west/
+
+# log coordinado
+#data_las_vegas/
+#north_west/
 # Unit test / coverage reports 
 htmlcov/ 
 .tox/ 

@@ -1,0 +1,21 @@
+Descripcion,Unidad de medida,Tipo
+Posición Interruptor,Abierto/Cerrado,Estado
+Apertura por protecciones,Protección Eléctrica,Alarma
+Posición Desconectador,Abierto/Cerrado,Estado
+Posición Interruptor,Abierto/Cerrado,Estado
+Flujo de potencia activa (+/-),MW,Análogo
+Flujo de potencia reactiva (+/-),MVAr,Análogo
+Potencia activa neta del generador,MW,Análogo
+Potencia reactiva neta del generador,MVAr,Análogo
+Velocidad del Viento,m/s,Análogo
+Dirección del Viento,°,Análogo
+Temperatura Módulos a la altura de los paneles solares,°C,Análogo
+Irradiancia (Global: Parques sin seguidor/Directa: Parques con seguidor),W/m2,Análogo
+Disponibilidad Parque Solar según condición solar,MW,Análogo
+Estado de Modo de Control del Parque,Manual/Automático,Estado
+Estado del regulador de tensión: Factor de Potencia,Habilitado/Deshabilitado,Estado
+Consigna Factor de Potencia, -1 a 1,Análogo
+Estado del regulador de tensión: Tensión,Habilitado/Deshabilitado,Estado
+Consigna Tensión,kV,Análogo
+Estado del regulador de tensión: potencia reactiva,Habilitado/Deshabilitado,Estado
+Consigna Potencia Reactiva,MVAr,Análogo
