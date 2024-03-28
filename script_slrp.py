@@ -52,5 +52,8 @@ def read_csv_slrp():
     collection = collections("Coordinado", "SLRP")
     #aqui continuas con el codigo para insertar los documentos
     
+    
+    client.close()
+    
 if __name__ == '__main__':
     read_csv_slrp()
