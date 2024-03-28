@@ -3,7 +3,7 @@ import subprocess
 def execute_script(cant: int, category_time: str, count_time: int):
     process = []
     for index in range(cant):
-        process_ = subprocess.Popen(['python', 'main.py', '-index', str(index), "-time", category_time,
+        process_ = subprocess.Popen(['python', 'script_sitr.py', '-index', str(index), "-time", category_time,
                                      "-count", str(count_time)])
         process.append(process_)
 
