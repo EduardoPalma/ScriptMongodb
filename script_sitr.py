@@ -14,7 +14,7 @@ import time
 import argparse
 
 config = dotenv_values(".env")
-uri = "mongodb+srv://adminconecta:"+quote_plus('9AAd96631')+"@conectatest.funtyje.mongodb.net/?retryWrites=true&w=majority&appName=ConectaTest"
+uri = config['URL_MONGO']
 client = MongoClient(config["ADDRESS"], int(config["PORT"]))
 
 
