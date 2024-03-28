@@ -1,0 +1,157 @@
+{
+    "name": "Conecta",
+    "valid_data": "valido",
+    "valid_time": true,
+    "time": "2024-03-06 13:55:08.011109",
+    "category_variables": [
+        {
+            "name": "instalaciones_generacion",
+            "variables": [
+                {
+                    "name": "o",
+                    "value": 53270,
+                    "unit": "unit"
+                },
+                {
+                    "name": "b",
+                    "value": 55697,
+                    "unit": "unit"
+                },
+                {
+                    "name": "b",
+                    "value": 33171,
+                    "unit": "unit"
+                },
+                {
+                    "name": "o",
+                    "variables": [
+                        {
+                            "name": "s",
+                            "value": 11722,
+                            "unit": "unit"
+                        },
+                        {
+                            "name": "t",
+                            "state": "0"
+                        }
+                    ]
+                },
+                {
+                    "name": "t",
+                    "state": "1"
+                },
+                {
+                    "name": "k",
+                    "state": "1"
+                }
+            ]
+        },
+        {
+            "name": "parque_solar",
+            "variables": [
+                {
+                    "name": "a",
+                    "value": 37503,
+                    "unit": "unit"
+                },
+                {
+                    "name": "z",
+                    "value": 51061,
+                    "unit": "unit"
+                },
+                {
+                    "name": "z",
+                    "value": 4697,
+                    "unit": "unit"
+                },
+                {
+                    "name": "m",
+                    "value": 19502,
+                    "unit": "unit"
+                },
+                {
+                    "name": "l",
+                    "value": 55859,
+                    "unit": "unit"
+                },
+                {
+                    "name": "y",
+                    "value": 52720,
+                    "unit": "unit"
+                },
+                {
+                    "name": "k",
+                    "value": 50900,
+                    "unit": "unit"
+                },
+                {
+                    "name": "u",
+                    "value": 26964,
+                    "unit": "unit"
+                },
+                {
+                    "name": "y",
+                    "variables": [
+                        {
+                            "name": "c",
+                            "state": "1"
+                        },
+                        {
+                            "name": "g",
+                            "state": "1"
+                        },
+                        {
+                            "name": "j",
+                            "state": "1"
+                        }
+                    ]
+                },
+                {
+                    "name": "d",
+                    "variables": [
+                        {
+                            "name": "v",
+                            "state": "1"
+                        },
+                        {
+                            "name": "i",
+                            "state": "1"
+                        },
+                        {
+                            "name": "h",
+                            "state": "0"
+                        },
+                        {
+                            "name": "b",
+                            "state": "1"
+                        },
+                        {
+                            "name": "n",
+                            "state": "0"
+                        }
+                    ]
+                },
+                {
+                    "name": "l",
+                    "state": "1"
+                },
+                {
+                    "name": "d",
+                    "state": "0"
+                },
+                {
+                    "name": "a",
+                    "state": "1"
+                },
+                {
+                    "name": "q",
+                    "state": "1"
+                },
+                {
+                    "name": "h",
+                    "state": "1"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,228 @@
+{
+    "identificacion": "Conecta",
+    "validez dato": "valido",
+    "validez tiempo": "algo",
+    "instalaciones_generacion":
+    [
+        {
+            "nombre": "Tensión en bornes de la unidad generadora",
+            "valor": 300,
+            "unidad": "v"
+        },
+        {
+            "nombre": "Tensión en lado AT",
+            "valor": 300,
+            "unidad": "v"
+        },
+        {
+            "nombre": "Frecuencia unidad generadora",
+            "valor": 300,
+            "unidad": "hz"
+        },
+        {
+            "nombre": "Potencia bruta generada",
+            "valor": 300,
+            "unidad": "MW o kW"
+        },
+        {
+            "nombre": "Potencia Neta Generada",
+            "valor": 300,
+            "unidad": "MW o kW"
+        },
+        {
+            "nombre": "CPF",
+            "valor": "CPF habilitado/CPF deshabilitido"
+        },
+        {
+            "nombre": "Valor de estatismo de la unidad generadora",
+            "valor": 300,
+            "unidad": "%"
+        },
+        {
+            "nombre": "valor de banda muerta de controlador primario",
+            "valor": 300,
+            "unidad": "mHz"
+        },
+        {
+            "nombre": "valor de banda muerta de controlador primario",
+            "valor": 300,
+            "unidad": "MW"
+        },
+        {
+            "nombre": "Control de tension",
+            "variables":
+            [
+                {
+                    "nombre": "limite maximo",
+                    "valor": 300,
+                    "unidad": "MW"
+                },
+                {
+                    "nombre": "limite minimo",
+                    "valor": 300,
+                    "unidad": "MW"
+                },
+                {
+                    "nombre": "estado operacion",
+                    "estado": "local/remoto"
+                },
+                {
+                    "nombre": "estado del modo de control",
+                    "estado": "PV, PQ, Factor de potencia"
+                }
+            ]
+        },
+        {
+            "nombre": "PSS",
+            "estado": "en servicio/fuera de servicio"
+        },
+        {
+            "nombre": "combustible",
+            "valor": "algo"
+        },
+        {
+            "nombre": "centrales hidraulicas con embalses",
+            "valor": 5,
+            "unidad": "msnm"
+
+        }
+    ],
+    "parques_solares_eolicos":
+    [
+        {
+            "nombre": "Estado del controlador Potencia/Frecuencia",
+            "estado": "habilitado/deshabilitado"
+        },
+        {
+            "nombre": "Valor de consigna del controlador",
+            "valor": 300,
+            "unidad": "MW o %"
+        },
+        {
+            "nombre": "Valor de banda muerta del controlador",
+            "valor": 300,
+            "unidad": "mHz o %"
+        },
+        {
+            "nombre": "Estado del controlador de tasa de crecimiento",
+            "estado": "habilitado"
+        },
+        {
+            "nombre": "valor de consigna de tasa de crecimiento",
+            "valor": 300,
+            "unidad": "MW/min p.u/min"
+        },
+        {
+            "nombre": "Estado del controlador de limitacion del control de potencia",
+            "estado": "habilitado/deshabilitado"
+        },
+        {
+            "nombre": "Valor de consigna de limitacion del control de potencia",
+            "valor": 300,
+            "unidad": "MW o %"
+        },
+        {
+            "nombre": "Estado de control de tension por factor de potencia",
+            "estado": "habilitado/deshabilitado"
+        },
+        {
+            "nombre": "Valor de consigna del control de tension por factor de potencia",
+            "valor": 300,
+            "unidad": "%, kV o p.u"
+        },
+        {
+            "nombre": "estado de control tension por consigna de tension",
+            "estado": "habilitado/deshabilitado"
+        },
+        {
+            "nombre": "Valor de consigna de control tension por tension",
+            "valor": 300,
+            "unidad": "% kV p.u"
+        },
+        {
+            "nombre": "Estado de control tension por potencia reactiva",
+            "estado": "habilitado/deshabilitado"
+        },
+        {
+            "nombre": "Valor de consigna Control Tension por potencia Reactiva",
+            "valor": 300,
+            "unidad": "MVar o p.u"   
+        },
+        {
+            "nombre": "Estado de modo de control del parque eolico",
+            "estado": "manual/automatico"
+        },
+        {
+            "nombre": "Estado del Control frecuencia",
+            "estado": "habilitado/deshabilitado"
+        },
+        {
+            "nombre": "eolicas o/y solares",
+            "variables": 
+            [
+                {
+                    "name": "Temperatura modulos a la altura de los paneles solares",
+                    "valor": 30,
+                    "unidad": "C"
+                },
+                {
+                    "name": "irradancia",
+                    "variables": 
+                    [
+                        {
+                            "name": "global/Directa",
+                            "valor": 300,
+                            "unidad": "W/m2"
+                        }
+                    ]
+                },
+                {
+                    "name": "velocidad del viento",
+                    "valor": 300,
+                    "unidad": "m/s"
+                },
+                {
+                    "name": "direccion del viento",
+                    "valor": 30,
+                    "unidad": "°"
+                },
+                {
+                    "name": "Disponbilidad",
+                    "valor": 30,
+                    "unidad": "MW"
+                }
+            ]
+        },
+        {
+            "nombre": "eolicas o/y solares",
+            "variables": 
+            [
+                {
+                    "name": "Velocidad del viento a la altura de la turbina",
+                    "valor": 30,
+                    "unidad": "m/s"
+                },
+                {
+                    "name": "direccion del viento a la altura de la turbina",
+                    "valor": 30,
+                    "unidad": "°"
+                },
+                {
+                    "name": "Temperatura aire a la altura de la turbina",
+                    "valor": 300,
+                    "unidad": "C"
+                },
+                {
+                    "name": "Presion del aire",
+                    "valor": 30,
+                    "unidad": "HPa"
+                },
+                {
+                    "name": "Disponbilidad",
+                    "valor": 30,
+                    "unidad": "MW"
+                }
+            ]
+        }
+    ]
+}

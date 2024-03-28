@@ -1,0 +1,50 @@
+[{
+    "collecion": "coordinado",
+    "_id": "codigo",
+    "nombreCoordinador": "nombre coordinado",
+    "subestaciones":
+    [
+        {
+            "nombre": "nombre subestacion",
+            "pañoBarra": 
+            [
+                {
+                    "name": "nombre paño o barra",
+                    "categoria": "categoria",
+                    "protecciones": 
+                    [
+                        {
+                            "name": "nombre proteccion"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+},
+{
+    "collecion": "eventos",
+    "_idCoordinado": "id del coordinado",
+    "subestacion": "nombre subestacion",
+    "nombreProteccion": "nombre de la proteccion",
+    "datetime": "fecha",
+    "categoria": "categoria"
+},
+{
+    "collecion": "ajustes",
+    "_idCoordinado": "id del coordinado",
+    "subestacion": "nombre subestacion",
+    "nombreProteccion": "nombre de la proteccion",
+    "datetime": "fecha",
+    "mas datos": "otros datos"
+
+},
+{
+    "collecion": "oscilografia",
+    "_idCoordinado": "id del coordinado",
+    "subestacion": "nombre subestacion",
+    "nombreProteccion": "nombre de la proteccion",
+    "datetime": "fecha",
+    "mas datos": "otros datos"
+}
+]
