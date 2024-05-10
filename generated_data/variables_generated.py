@@ -22,7 +22,7 @@ def generated_v_analogic(variables_analogic_names: List[AnalogicDTO]) -> List[Va
     variables: list[VariableAnalogic] = []
 
     for analogic_var in variables_analogic_names:
-        var_analogic = VariableAnalogic(valid_data="valido", valid_time=True, name=analogic_var.name, value=generated_num(), unit=analogic_var.unit)
+        var_analogic = VariableAnalogic(name=analogic_var.name, value=generated_num(), unit=analogic_var.unit)
         variables.append(var_analogic)
 
     return variables
@@ -32,7 +32,7 @@ def generated_v_state(variables_state_names: List[str]) -> List[VariableState]:
     variables: list[VariableState] = []
 
     for variable_name in variables_state_names:
-        var_analogic = VariableState(valid_data="valido", valid_time=True,name=variable_name, state=random.randint(0,1))
+        var_analogic = VariableState(name=variable_name, state=random.randint(0,1))
         variables.append(var_analogic)
 
     return variables
