@@ -2,15 +2,11 @@
 import random
 from dotenv import dotenv_values
 from pymongo import MongoClient
-#ignora esto
-from pymongo.server_api import ServerApi
-#hasta aqui
 from generated_data.variables_generated import generated_variables
-from variables.models import Coordinado, Coordinated, Substation, Variable, Data
+from variables.models import Coordinado, Coordinated, Variable, Data
 from datetime import datetime, timezone
 from typing import List 
 from generated_data.format_data import read_data_sitr
-from urllib.parse import quote_plus
 import time
 import argparse
 from bson import ObjectId
@@ -143,8 +139,6 @@ def generated_variable(variables, coll_variable):
             coll_variable.insert_one(variable)
         
         
-            
-
 def connection_mongodb():
     db = client[config["DB_NAME"]]
     collections = db[config["COLLECTIONS"]]
@@ -164,16 +158,20 @@ def batch_document(numero_de_horas, collection, type: str, index: int):
             time.sleep(1)
 
 if __name__ == '__main__':
-    #create_time_series_variable_coll()
-    parser = argparse.ArgumentParser(description="Scrpit de simulacion de variables electricas en un cliente, con 12 subestaciones, entregando por argumenntando la subestacion que se va a simular")
+    parser = argparse.ArgumentParser(description="Scrpit de simulacion de variables electricas en dos clientes, uno con 12 subestaciones y el otro solamente con 1, entregando por argumenntando la subestacion que se va a simular")
+    parser.add_argument("-create", "--state")
     parser.add_argument("-index", "--indice", type=int, help="indice de la subestacion")
     parser.add_argument("-time", "--tiempo", type=str, help="variable Tiempo hrs o sec")
     parser.add_argument("-count", "--cantidad", type=int, help="cantidad de tiempo segundos o horas")
     args = parser.parse_args()
     print(args)
-    db = client[config["DB_NAME"]]
-    collect = db.get_collection("variables")
-    batch_document(args.cantidad, collect, args.tiempo, args.indice)
-    client.close()
+    if args.state != None:
+        add_coordinated()
+        create_time_series_variable_coll()
+    else:
+        db = client[config["DB_NAME"]]
+        collect = db.get_collection("variables")
+        batch_document(args.cantidad, collect, args.tiempo, args.indice)
+        client.close()
     
     
