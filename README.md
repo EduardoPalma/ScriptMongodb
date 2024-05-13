@@ -51,7 +51,7 @@ numero de veces a ejecutar : 13
 Categoria de tiempo hrs o sec : hrs
 Cantidad de horas o sec : 24
 ```
-Lo anterior se ejecutara durante 24 horas, en 13 subestaciones.
+Lo anterior se ejecutara durante 24 horas, en 13 subestaciones. La base de datos del SITR se llama **test_conecta**
 
 
 ### DataBase SLRP¨
@@ -61,7 +61,10 @@ Para crear la base de datos del Sistema de lectura de protecciones, utilicen el 
 ```
 python -m script_slrp
 ```
+La base de datos del SLRP es llamada **SLRP¨**
+
 Con lo anterior, su base de datos MongoDB estará inicializada con los modelos definidos, ademas de los datos de los csv dentro de las carpetas.
+Tomar en cuentra que son base de datos distintas, es importante realizar un modelo en conjunto o separado que soporte la informacion de ambos servicios
 
 Importante
 
