@@ -1,4 +1,4 @@
-
+from datetime import datetime
 from dotenv import dotenv_values
 from pydantic import BaseModel
 from pymongo import MongoClient
@@ -48,12 +48,96 @@ def read_csv_slrp():
     objetos_eventos: List[EventosCSV] = transforms_object(df_eventos, EventosCSV)
     objetos_oscilografia: List[OscilografiaCSV] = transforms_object(df_oscilografia, OscilografiaCSV)
     objetos_ajustes: List[AjustesCSV] = transforms_object(df_ajustes, AjustesCSV)
+
     
-    collection = collections("Coordinado", "SLRP")
+    collection_coordinado= collections("Coordinado", "SLRP")
+    collection_eventos = collections("eventos", "SLRP")
+    collection_ajustes = collections("ajustes", "SLRP")
+    collection_oscilografia = collections("oscilografia", "SLRP")
+  
     #aqui continuas con el codigo para insertar los documentos
-    
+
+    # Creación de la estructura de datos para inserción
+    data_to_insert = []
+    data_event = []
+    data_oscilografia = []
+    data_ajustes = []
+
+    # Inserción de datos de coordinado y subestaciones
+    for coordinado_objeto in objetos_coordinado:
+        coordinado_data = {
+            "_id": coordinado_objeto.codigo,
+            "nombreCoordinador": coordinado_objeto.nombre,
+            "subestaciones": []
+        }
+        
+        for subestacion_objeto in objetos_subestacion:
+            if subestacion_objeto.codigo_coord == coordinado_objeto.codigo:
+                subestacion_data = {
+                    "nombre": subestacion_objeto.proteccion_name,
+                    "pañoBarra": []
+                }
+                
+                for pano_barra_objeto in objetos_pano_barra:
+                    if pano_barra_objeto.cod_subestacion == subestacion_objeto.codigo:
+                        pano_barra_data = {
+                            "name": pano_barra_objeto.nombrepb,
+                            "categoria": categoria_pano_barra[pano_barra_objeto.cod_categoria_paño_barra],
+                            "protecciones": []
+                        }
+                        
+                        for proteccion_objeto in objetos_protecciones:
+                            if proteccion_objeto.cod_identificacion_paño_barra == pano_barra_objeto.cod_identificacion_pano_barra:
+                                proteccion_data = {
+                                    "name": proteccion_objeto.nombre_proteccion
+                                }
+                                pano_barra_data["protecciones"].append(proteccion_data)
+                                for evento_objeto in objetos_eventos:
+                                    if evento_objeto.cod_proteccion == proteccion_objeto.cod_proteccion:
+                                        fecha_datetime = datetime.strptime(evento_objeto.fecha_evento + ' ' + evento_objeto.hora, '%Y-%m-%d %H:%M:%S')
+                                        evento_data = {
+                                            "_idCoordinado": coordinado_objeto.codigo,
+                                            "subestacion": subestacion_objeto.proteccion_name,
+                                            "nombreProteccion": proteccion_objeto.nombre_proteccion,
+                                            "datetime": fecha_datetime,
+                                            "categoria": 'data'
+                                        }
+                                        data_event.append(evento_data)
+                                for oscilografia_objeto in objetos_oscilografia:
+                                    if oscilografia_objeto.cod_proteccion == proteccion_objeto.cod_proteccion:
+                                        fecha_datetime = datetime.strptime(oscilografia_objeto.fecha_oscilografia + ' ' + oscilografia_objeto.hora, '%Y-%m-%d %H:%M:%S')
+                                        oscilografia_data = {
+                                            "_idCoordinado": coordinado_objeto.codigo,
+                                            "subestacion": subestacion_objeto.proteccion_name,
+                                            "nombreProteccion": proteccion_objeto.nombre_proteccion,
+                                            "datetime": fecha_datetime,
+                                            "otrodato": 'data'
+                                        }
+                                        data_oscilografia.append(oscilografia_data)
+                                for ajuste_objeto in objetos_ajustes:
+                                    if ajuste_objeto.cod_proteccion == proteccion_objeto.cod_proteccion:
+                                        fecha_datetime = datetime.strptime(ajuste_objeto.fecha_ajuste + ' ' + ajuste_objeto.hora, '%Y-%m-%d %H:%M:%S')
+                                        ajuste_data = {
+                                            "_idCoordinado": coordinado_objeto.codigo,
+                                            "subestacion": subestacion_objeto.proteccion_name,
+                                            "nombreProteccion": proteccion_objeto.nombre_proteccion,
+                                            "datetime": fecha_datetime,
+                                            "otrodato": 'data'
+                                         }
+                                        data_ajustes.append(ajuste_data)
+                                            
+                        
+                        subestacion_data["pañoBarra"].append(pano_barra_data)
+                
+                coordinado_data["subestaciones"].append(subestacion_data)
+        
+        data_to_insert.append(coordinado_data)
+
+    collection_coordinado.insert_many(data_to_insert)
+    collection_ajustes.insert_many(data_ajustes)
+    collection_oscilografia.insert_many(data_oscilografia)
+    collection_eventos.insert_many(data_event)
     
     client.close()
-    
-if __name__ == '__main__':
-    read_csv_slrp()
+
+read_csv_slrp()
