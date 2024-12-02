@@ -116,16 +116,16 @@ def generate_time_series_variable(index: int):
     
     return variables
 
-def generated_variable(variables, coll_variable):
+def generated_variable(variables, coll_variable, delete_oldest_document):
     date = datetime.now(timezone.utc)
     for variable in variables:
         id_variable = variable["variable_id"]
-        #elimino la mas antigua
-        oldest_document = coll_variable.find_one(
-            sort=[("timestamp", 1)])  # 1 es ascendente, para obtener el más antiguo
-        if oldest_document:
-            print(oldest_document["timestamp"])
-            coll_variable.delete_one({"_id": oldest_document["_id"]})
+        #elimino la mas antigua si se quiere eliminar
+        if delete_oldest_document:
+            oldest_document = coll_variable.find_one(
+                sort=[("timestamp", 1)])  # 1 es ascendente, para obtener el más antiguo
+            if oldest_document:
+                coll_variable.delete_one({"_id": oldest_document["_id"]})
 
         if variable["category"] == "analogic":
             variable = {
@@ -151,17 +151,17 @@ def connection_mongodb():
     collections = db[config["COLLECTIONS"]]
     return collections
 
-def batch_document(numero_de_horas, collection, type: str, index: int):
+def batch_document(numero_de_horas, collection, type: str, index: int, delete_oldest_document):
     tiempo_total_segundos = numero_de_horas * 3600
     if type == "sec":
         for _ in range(numero_de_horas):
             variables = generate_time_series_variable(index)
-            generated_variable(variables, collection)
+            generated_variable(variables, collection, delete_oldest_document)
             time.sleep(1)
     else:
         for _ in range(tiempo_total_segundos):
             variables = generate_time_series_variable(index)
-            generated_variable(variables, collection)
+            generated_variable(variables, collection, delete_oldest_document)
             time.sleep(1)
 
 if __name__ == '__main__':
@@ -170,6 +170,7 @@ if __name__ == '__main__':
     parser.add_argument("-index", "--indice", type=int, help="indice de la subestacion")
     parser.add_argument("-time", "--tiempo", type=str, help="variable Tiempo hrs o sec")
     parser.add_argument("-count", "--cantidad", type=int, help="cantidad de tiempo segundos o horas")
+    parser.add_argument("-delete", "--delete", type=int, help="eliminar el documento mas antiguo")
     args = parser.parse_args()
     print(args)
     if args.state != None:
@@ -178,7 +179,7 @@ if __name__ == '__main__':
     else:
         db = client[config["DB_NAME"]]
         collect = db.get_collection("variables")
-        batch_document(args.cantidad, collect, args.tiempo, args.indice)
+        batch_document(args.cantidad, collect, args.tiempo, args.indice, args.delete)
         client.close()
     
     
