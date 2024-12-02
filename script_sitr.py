@@ -13,8 +13,8 @@ from bson import ObjectId
 
 config = dotenv_values(".env")
 uri = config['URL_MONGO']
-client = MongoClient(config["ADDRESS"], int(config["PORT"]))
-
+#client = MongoClient(config["ADDRESS"], int(config["PORT"]))
+client = MongoClient(uri)
 
 def add_coordinated():
     """
@@ -120,6 +120,13 @@ def generated_variable(variables, coll_variable):
     date = datetime.now(timezone.utc)
     for variable in variables:
         id_variable = variable["variable_id"]
+        #elimino la mas antigua
+        oldest_document = coll_variable.find_one(
+            sort=[("timestamp", 1)])  # 1 es ascendente, para obtener el más antiguo
+        if oldest_document:
+            print(oldest_document["timestamp"])
+            coll_variable.delete_one({"_id": oldest_document["_id"]})
+
         if variable["category"] == "analogic":
             variable = {
                     "metadata": { "idVariable": id_variable,
